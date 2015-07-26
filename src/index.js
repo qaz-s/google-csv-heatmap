@@ -18,7 +18,7 @@ $(function () {
     var csvstring = "";
     $("#file-list").empty();
     $("#import-btn").attr("disabled", true);
-    $("#modal").show();
+    $("#modal").show().animation("fadeIn");
   });
 
   $("#modal").on("click", function () {
