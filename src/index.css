@@ -74,6 +74,13 @@ html, body {
 }
 
 /*
+ * プログレスバー
+ */
+#progress {
+  margin: 10px 0px;
+}
+
+/*
  * ツールチップ
  */
 #help-tooltip {
@@ -114,6 +121,8 @@ html, body {
 }
 
 .fadeIn {
+  -webkit-animation-duration:0.3s;
+  animation-duration:0.3s;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }

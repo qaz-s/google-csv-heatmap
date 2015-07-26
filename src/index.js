@@ -15,9 +15,9 @@ $(function () {
   });
 
   $("#add-btn").on("click", function () {
-    var csvstring = "";
     $("#file-list").empty();
     $("#import-btn").attr("disabled", true);
+    $("#progress").hide();
     $("#modal").show().animation("fadeIn");
   });
 
@@ -63,9 +63,24 @@ $(function () {
     }
 
     var reader = new FileReader();
+
+    reader.onloadstart = function(e) {
+      $("#progress").show();
+    };
+
+    reader.onprogress = function (e) {
+      if (e.lengthComputable) {
+        var percentLoaded = Math.round((e.loaded / e.total) * 100);
+        if (percentLoaded < 100) {
+          $("#progress").get(0).MaterialProgress.setProgress(percentLoaded);
+        }
+      }
+    };
+
     reader.onload = function (e) {
       csvstring = e.target.result;
       $("#import-btn").attr("disabled", false);
+      $("#progress").get(0).MaterialProgress.setProgress(100);
     };
     reader.readAsText(file, "Shift_JIS");
     var list = "<li>" +
@@ -75,6 +90,7 @@ $(function () {
                   " last modified: " + file.lastModifiedDate.toLocaleDateString() +
                 "</li>";
     $("#file-list").append(list);
+
   });
 
   function csv2json(csvString){
