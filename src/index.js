@@ -33,7 +33,9 @@ $(function () {
     var jsonArray = csv2json(csvstring);
     var latlngs = [];
     for (var i = 0; i < jsonArray.length - 1; i++) {
-      latlngs.push(new google.maps.LatLng(jsonArray[i].lat, jsonArray[i].lng));
+      var lat = transformDegree(jsonArray[i].lat);
+      var lng = transformDegree(jsonArray[i].lng);
+      latlngs.push(new google.maps.LatLng(lat, lng));
     }
     var pointArray = new google.maps.MVCArray(latlngs);
     if (heatmap) {
@@ -109,6 +111,13 @@ $(function () {
       jsonArray.push(item);
     }
     return jsonArray;
+  }
+
+  function transformDegree(num) {
+    if (-180 <= num && num <= 180) {
+      return num;
+    }
+    return num / 3600000;
   }
 
 });
