@@ -57,7 +57,9 @@ $(function () {
     e.preventDefault();
     var file = e.originalEvent.dataTransfer.files[0];
 
-    if (!file.type.match("csv")) {
+    var arr = file.name.split(".");
+    var extention = arr[arr.length - 1];
+    if (extention.toLowerCase() !== "csv") {
       alert("Please drop the CSV file.");
       return;
     }
