@@ -1,10 +1,10 @@
 # CSVヒートマップ
 緯度経度データ(CSV形式)をGoogleマップ上にヒートマップ表示するツールです
 
-![キャプチャー](https://raw.githubusercontent.com/wiki/qaz-s/google-csv-heatmap/Heatmap.png)
+![キャプチャー](https://raw.githubusercontent.com/wiki/qazsato/google-csv-heatmap/Heatmap.png)
 
 ## 使用方法
-1. http://qaz-s.github.io/heatmap/ にアクセス
+1. http://qazsato.github.io/heatmap/ にアクセス
 2. 右下の+ボタンを選択し、CSVファイルをドラッグアンドドロップ
 3. CSVファイル読み込み後、IMPORTボタンを選択すればOK
 
