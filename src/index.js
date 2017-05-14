@@ -4,7 +4,7 @@ $(function () {
   var heatmap;
   var latlngs = [];
   var markers = [];
-
+  var markerCluster;
   $(window).on('load', function () {
     map = new google.maps.Map($('#map').get(0), {
       zoom: 5,
@@ -150,9 +150,7 @@ $(function () {
       heatmap = null;
     }
     if (markers.length > 0) {
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
+      markerCluster.clearMarkers();
       markers = [];
     }
   }
@@ -177,6 +175,7 @@ $(function () {
        });
        markers.push(marker);
      }
+     markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
   /**
    * 地図のビジュアライズ種別(ヒートマップ/マーカー)を返却します。
